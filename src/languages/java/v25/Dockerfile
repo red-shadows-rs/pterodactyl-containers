@@ -1,15 +1,14 @@
 
-
-FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:11-jdk-jammy
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-jammy
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
     version="1.0.0" \
-    description="Java 11 LTS runtime for Pterodactyl Panel" \
+    description="Java 25 runtime for Pterodactyl Panel" \
     org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \
-    org.opencontainers.image.title="Pterodactyl Java 11" \
-    org.opencontainers.image.description="Secure Java 11 LTS container for Pterodactyl"
+    org.opencontainers.image.title="Pterodactyl Java 25" \
+    org.opencontainers.image.description="Secure Java 25 container for Pterodactyl"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -21,21 +20,20 @@ RUN apt-get update \
     tar \
     sqlite3 \
     fontconfig \
-
     iproute2 \
     libfreetype6 \
     zip \
     unzip \
     procps \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/apt/lists/*  /tmp/* /var/tmp/* \
     && useradd -m -d /home/container -s /bin/bash container \
     && chown container:container /home/container
 
 USER container
 ENV USER=container \
     HOME=/home/container \
-    JAVA_OPTS="-XX:+UseG1GC"
+    JAVA_OPTS="-XX:+UseG1GC -XX:+UseStringDeduplication"
 
 WORKDIR /home/container
 

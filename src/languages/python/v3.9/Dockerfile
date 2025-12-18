@@ -1,34 +1,34 @@
-# © Copyright RED SHADOWS | RS - Shadow-x78
+
 
 FROM --platform=$TARGETOS/$TARGETARCH python:3.9-slim
 
-LABEL author="Shadow-x78" \
-      maintainer="support@red-shadows-rs.com" \
-      version="1.0.0" \
-      description="Python 3.9 runtime for Pterodactyl Panel" \
-      org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
-      org.opencontainers.image.vendor="RED SHADOWS | RS" \
-      org.opencontainers.image.title="Pterodactyl Python 3.9" \
-      org.opencontainers.image.description="Secure Python 3.9 container for Pterodactyl"
+LABEL author="RED SHADOWS | RS" \
+    maintainer="support@red-shadows-rs.com" \
+    version="1.0.0" \
+    description="Python 3.9 runtime for Pterodactyl Panel" \
+    org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
+    org.opencontainers.image.vendor="RED SHADOWS | RS" \
+    org.opencontainers.image.title="Pterodactyl Python 3.9" \
+    org.opencontainers.image.description="Secure Python 3.9 container for Pterodactyl"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        curl \
-        lsof \
-        ca-certificates \
-        openssl \
-        git \
-        tar \
-        sqlite3 \
-        fontconfig \
-        tzdata \
-        iproute2 \
-        libfreetype6 \
-        zip \
-        unzip \
-        procps \
+    curl \
+    lsof \
+    ca-certificates \
+    openssl \
+    git \
+    tar \
+    sqlite3 \
+    fontconfig \
+
+    iproute2 \
+    libfreetype6 \
+    zip \
+    unzip \
+    procps \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && useradd -m -d /home/container -s /bin/bash container \
@@ -36,8 +36,7 @@ RUN apt-get update \
 
 USER container
 ENV USER=container \
-    HOME=/home/container \
-    TZ=UTC
+    HOME=/home/container
 
 WORKDIR /home/container
 

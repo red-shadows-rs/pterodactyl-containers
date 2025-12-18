@@ -1,10 +1,8 @@
-<!-- © Copyright RED SHADOWS | RS - Shadow-x78 -->
-
 # Pterodactyl Containers 🔨
 
 ![Pterodactyl](https://img.shields.io/badge/Pterodactyl-0e4688?style=for-the-badge&logo=pterodactyl&logoColor=white)
+[![Changelog](https://img.shields.io/badge/Changelog-v1.2-blue?style=for-the-badge)](CHANGELOG.md)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 ## ✨ Features
 
@@ -14,25 +12,44 @@
 - 🚀 **Production ready**: Optimized for Pterodactyl
 - ⚡ **Fast**: Efficient caching
 
-## 🐳 Supported Images
+## 🐳 Supported Containers
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java" width="20" height="20"/> Java
 
-**Versions:** 8, 11, 17, 21
-
-**Base:** Eclipse Temurin (Ubuntu Jammy)
+- **Versions:** 8, 11, 17, 21, 25
+- **Base:** Eclipse Temurin (Ubuntu Jammy)
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="Node.js" width="20" height="20"/> Node.js
 
-**Versions:** 18, 20, 22
-
-**Base:** Official Node.js (Debian Bullseye Slim)
+- **Versions:** 18, 20, 22, 24
+- **Base:** Official Node.js (Debian Bullseye Slim)
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="20" height="20"/> Python
 
-**Versions:** 3.9, 3.10, 3.11, 3.12
+- **Versions:** 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
+- **Base:** Python Slim (Debian)
 
-**Base:** Python Slim (Debian)
+## 🌐 Web Frameworks
+
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React" width="20" height="20"/> React
+- **Base:** Node.js 22
+- **Features:** CRA, Vite, Custom Builds
+- **Startup:** `npm start` (or custom)
+
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" alt="Next.js" width="20" height="20"/> Next.js
+- **Base:** Node.js 22
+- **Features:** SSR, ISR, Static Export
+- **Startup:** `npm run start` (or `npm run dev`)
+
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" alt="Vue.js" width="20" height="20"/> Vue.js
+- **Base:** Node.js 22
+- **Features:** Vue CLI, Vite
+- **Startup:** `npm run serve` (or custom)
+
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg" alt="Angular" width="20" height="20"/> Angular
+- **Base:** Node.js 22
+- **Features:** Angular CLI
+- **Startup:** `npm start` (ensure host is 0.0.0.0)
 
 ## 🚀 Usage
 
@@ -52,14 +69,26 @@
 ### 🐳 Pull from GitHub Container Registry
 
 ```bash
-# Java 21
-docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/java:v21
+# Java 25
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/java:v25
 
-# Node.js 22
-docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22
+# Node.js 24
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v24
 
-# Python 3.12
-docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/python:v3.12
+# Python 3.14
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/python:v3.14
+
+# React
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/react:latest
+
+# Next.js
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/nextjs:latest
+
+# Vue.js
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/vue:latest
+
+# Angular
+docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/angular:latest
 ```
 
 > Change the tag/version as needed.
@@ -67,22 +96,33 @@ docker pull ghcr.io/red-shadows-rs/pterodactyl-containers/python:v3.12
 ### 🔨 Build locally
 
 ```bash
-# Java 21
-docker build -f src/languages/java/v21/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/java:v21 src/languages/java/
+# Java 25
+docker build -f src/languages/java/v25/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/java:v25 src/languages/java/
 
-# Node.js 22
-docker build -f src/languages/nodejs/v22/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22 src/languages/nodejs/
+# Node.js 24
+docker build -f src/languages/nodejs/v24/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v24 src/languages/nodejs/
 
-# Python 3.12
-docker build -f src/languages/python/v3.12/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/python:v3.12 src/languages/python/
+# Python 3.14
+docker build -f src/languages/python/v3.14/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/python:v3.14 src/languages/python/
+
+# React
+docker build -f src/frameworks/react/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/react:latest src/frameworks/react/
+
+# Next.js
+docker build -f src/frameworks/nextjs/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/nextjs:latest src/frameworks/nextjs/
+
+# Vue.js
+docker build -f src/frameworks/vue/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/vue:latest src/frameworks/vue/
+
+# Angular
+docker build -f src/frameworks/angular/Dockerfile -t ghcr.io/red-shadows-rs/pterodactyl-containers/angular:latest src/frameworks/angular/
 ```
 
 ### ⚙️ Environment Variables
 
 | Variable  | Description                | Default | Required |
 |-----------|----------------------------|---------|----------|
-| `STARTUP` | Startup Coomand            | -       | ✅       |
-| `TZ`      | Timezone                   | `UTC`   | ❌       |
+| `STARTUP` | Startup Command            | -       | ✅       |
 
 ### 📁 Volume
 
@@ -115,4 +155,4 @@ MIT — see [LICENSE](LICENSE)
 ---
 
 <span style="font-weight:bold;vertical-align:middle;">&#169; 2025 Copyright</span>
-<img src="https://img.shields.io/badge/RED%20SHADOWS%20%7C%20RS-DC143C?style=flat&logo=github&logoColor=white&labelColor=2F2F2F" alt="RED SHADOWS | RS" style="vertical-align:middle;"/> &#124; <img src="https://img.shields.io/badge/Shadow--x78-000000?style=flat&logo=github&logoColor=white&labelColor=2F2F2F" alt="Shadow-x78" style="vertical-align:middle;"/> - <span style="font-weight:bold;vertical-align:middle;">All rights reserved</span>
+**RED SHADOWS | RS** - <span style="font-weight:bold;vertical-align:middle;">All rights reserved</span>

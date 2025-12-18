@@ -1,10 +1,10 @@
-# © Copyright RED SHADOWS | RS - Shadow-x78
+
 
 #!/bin/bash
 set -e
 umask 022
 
-export TZ=${TZ:-UTC}
+
 cd /home/container || exit 1
 
 if [[ -z "${STARTUP}" ]]; then

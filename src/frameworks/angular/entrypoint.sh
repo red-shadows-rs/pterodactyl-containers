@@ -1,9 +1,7 @@
 
-
 #!/bin/bash
 set -e
 umask 022
-
 
 cd /home/container || exit 1
 
@@ -19,6 +17,6 @@ if [[ -z "${PARSED}" ]]; then
     exit 1
 fi
 
-echo ":/home/container\$ ${PARSED}"
+echo ":/home/container$ ${PARSED}"
 
 exec bash -c "${PARSED}"
