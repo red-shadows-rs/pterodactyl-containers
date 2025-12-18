@@ -1,4 +1,3 @@
-
 FROM --platform=$TARGETOS/$TARGETARCH python:3.14-slim
 
 LABEL author="RED SHADOWS | RS" \

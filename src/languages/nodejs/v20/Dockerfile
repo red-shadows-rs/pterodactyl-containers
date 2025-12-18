@@ -1,5 +1,3 @@
-
-
 FROM --platform=$TARGETOS/$TARGETARCH node:20-bullseye-slim
 
 LABEL author="RED SHADOWS | RS" \

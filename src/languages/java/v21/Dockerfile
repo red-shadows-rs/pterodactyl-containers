@@ -1,5 +1,3 @@
-
-
 FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:21-jdk-jammy
 
 LABEL author="RED SHADOWS | RS" \

@@ -1,0 +1,245 @@
+name: Pterodactyl Containers
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ${{ github.repository }}
+  SHOULD_PUSH: ${{ github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+
+jobs:
+  build-java:
+    name: Build Java ${{ matrix.version }} Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    strategy:
+      matrix:
+        version: [v8, v11, v17, v21, v25]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+
+      - name: Build Java ${{ matrix.version }} Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/languages/java
+          file: ./src/languages/java/${{ matrix.version }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/java:${{ matrix.version }}
+
+  build-nodejs:
+    name: Build Node.js ${{ matrix.version }} Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    strategy:
+      matrix:
+        version: [v18, v20, v22, v24]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+
+      - name: Build Node.js ${{ matrix.version }} Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/languages/nodejs
+          file: ./src/languages/nodejs/${{ matrix.version }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/nodejs:${{ matrix.version }}
+
+  build-python:
+    name: Build Python ${{ matrix.version }} Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    strategy:
+      matrix:
+        version: [v3.8, v3.9, v3.10, v3.11, v3.12, v3.13, v3.14]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+
+      - name: Build Python ${{ matrix.version }} Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/languages/python
+          file: ./src/languages/python/${{ matrix.version }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/python:${{ matrix.version }}
+
+  build-react:
+    name: Build React Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+      - name: Build React Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/frameworks/react
+          file: ./src/frameworks/react/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/react:latest
+
+  build-nextjs:
+    name: Build Next.js Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+      - name: Build Next.js Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/frameworks/nextjs
+          file: ./src/frameworks/nextjs/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/nextjs:latest
+
+  build-vue:
+    name: Build Vue.js Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+      - name: Build Vue.js Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/frameworks/vue
+          file: ./src/frameworks/vue/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/vue:latest
+
+  build-angular:
+    name: Build Angular Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+        shell: /bin/bash -e {0}
+      - name: Build Angular Container
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/frameworks/angular
+          file: ./src/frameworks/angular/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/angular:latest
+
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [build-java, build-nodejs, build-python, build-react, build-nextjs, build-vue, build-angular]
+    if: always()
+    steps:
+      - name: Generate Build Report
+        run: |
+          echo "Java:     ${{ needs.build-java.result }}"
+          echo "Node.js:  ${{ needs.build-nodejs.result }}"
+          echo "Python:   ${{ needs.build-python.result }}"
+          echo "React:    ${{ needs.build-react.result }}"
+          echo "Next.js:  ${{ needs.build-nextjs.result }}"
+          echo "Vue.js:   ${{ needs.build-vue.result }}"
+          echo "Angular:  ${{ needs.build-angular.result }}"
+          echo "------------------------------------------------"
+
+          if [[ "${{ needs.build-java.result }}" != "success" || \
+                "${{ needs.build-nodejs.result }}" != "success" || \
+                "${{ needs.build-python.result }}" != "success" || \
+                "${{ needs.build-react.result }}" != "success" || \
+                "${{ needs.build-nextjs.result }}" != "success" || \
+                "${{ needs.build-vue.result }}" != "success" || \
+                "${{ needs.build-angular.result }}" != "success" ]]; then
+            echo "[!] Some builds failed! Please check the logs."
+            exit 1
+          else
+            echo "[✓] All images built successfully!"
+          fi
+        shell: /bin/bash -e {0}
