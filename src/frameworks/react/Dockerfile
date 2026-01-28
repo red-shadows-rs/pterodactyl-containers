@@ -9,7 +9,7 @@ LABEL author="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl React" \
     org.opencontainers.image.description="Secure React container for Pterodactyl with Vite and CRA support"
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \

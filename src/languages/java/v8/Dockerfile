@@ -9,7 +9,7 @@ LABEL author="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Java 8" \
     org.opencontainers.image.description="Secure Java 8 LTS container for legacy Pterodactyl"
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -19,7 +19,6 @@ RUN apt-get update \
     tar \
     sqlite3 \
     fontconfig \
-
     iproute2 \
     libfreetype6 \
     zip \

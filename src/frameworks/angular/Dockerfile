@@ -9,7 +9,7 @@ LABEL author="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Angular" \
     org.opencontainers.image.description="Secure Angular container for Pterodactyl with Angular CLI support"
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \

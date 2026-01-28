@@ -9,7 +9,7 @@ LABEL author="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Java 25" \
     org.opencontainers.image.description="Secure Java 25 container for Pterodactyl"
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -25,7 +25,7 @@ RUN apt-get update \
     unzip \
     procps \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*  /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && useradd -m -d /home/container -s /bin/bash container \
     && chown container:container /home/container
 

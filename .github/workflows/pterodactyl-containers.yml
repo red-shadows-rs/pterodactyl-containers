@@ -13,6 +13,10 @@ env:
   IMAGE_PREFIX: ${{ github.repository }}
   SHOULD_PUSH: ${{ github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch' }}
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-java:
     name: Build Java ${{ matrix.version }} Image
@@ -33,9 +37,11 @@ jobs:
 
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Java ${{ matrix.version }} Container
         uses: docker/build-push-action@v5
@@ -66,9 +72,11 @@ jobs:
 
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Node.js ${{ matrix.version }} Container
         uses: docker/build-push-action@v5
@@ -99,9 +107,11 @@ jobs:
 
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Python ${{ matrix.version }} Container
         uses: docker/build-push-action@v5
@@ -126,9 +136,11 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
       - name: Build React Container
         uses: docker/build-push-action@v5
         with:
@@ -151,9 +163,11 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Next.js Container
         uses: docker/build-push-action@v5
         with:
@@ -176,9 +190,11 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Vue.js Container
         uses: docker/build-push-action@v5
         with:
@@ -201,9 +217,11 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Log in to GitHub Container Registry
         if: ${{ env.SHOULD_PUSH }}
-        run: |
-          echo "${{ secrets.GHCR_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-        shell: /bin/bash -e {0}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Angular Container
         uses: docker/build-push-action@v5
         with:

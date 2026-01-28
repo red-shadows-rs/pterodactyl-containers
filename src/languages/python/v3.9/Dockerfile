@@ -11,7 +11,7 @@ LABEL author="RED SHADOWS | RS" \
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -21,7 +21,6 @@ RUN apt-get update \
     tar \
     sqlite3 \
     fontconfig \
-
     iproute2 \
     libfreetype6 \
     zip \
