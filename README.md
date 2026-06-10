@@ -55,7 +55,7 @@ Production-ready Docker images for the Pterodactyl Panel
 | 22 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22` |
 | 24 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v24` |
 
-**Features:** Yarn · npm · pnpm · npx · TypeScript · Corepack
+**Features:** Yarn · NPM · pnpm · npx · TypeScript · Corepack
 
 - - -
 
