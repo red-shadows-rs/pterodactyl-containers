@@ -1,6 +1,6 @@
 <div align="center">
 
-# حاويات Pterodactyl
+# Pterodactyl Containers
 
 صور Docker جاهزة للإنتاج للوحة Pterodactyl
 
@@ -32,7 +32,7 @@
 <a id="الصور-المدعومة"></a>
 ## 🐳 الصور المدعومة
 
-### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="16" height="16"> جافا
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="16" height="16"> Java
 
 | الإصدار | اسم الصورة |
 |---------|-----------|
@@ -46,7 +46,7 @@
 
 - - -
 
-### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" width="16" height="16"> نود.جے‌اس
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" width="16" height="16"> Node.js
 
 | الإصدار | اسم الصورة |
 |---------|-----------|
@@ -59,7 +59,7 @@
 
 - - -
 
-### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="16" height="16"> بايثون
+### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="16" height="16"> Python
 
 | الإصدار | اسم الصورة |
 |---------|-----------|
@@ -76,7 +76,7 @@
 ---
 
 <a id="أطر-العمل"></a>
-## 🌐 أُطر العمل
+## 🌐 أطر العمل
 
 | الإطار | اسم الصورة | المميزات |
 |-----------|-----------|----------|
@@ -92,7 +92,7 @@
 
 | البرنامج | اسم الصورة | المنفذ |
 |----------|-----------|------|
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> كود-سيرفر | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (افتراضي) |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> Code-Server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (افتراضي) |
 
 ---
 
@@ -100,12 +100,12 @@
 ## 🚀 بداية سريعة
 
 ```bash
-# سحب وتشغيل نود.جے‌اس 22
+# سحب وتشغيل Node.js 22
 docker run -it --rm \
   -e STARTUP="node --version" \
   ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22
 
-# سحب وتشغيل كود-سيرفر
+# سحب وتشغيل Code-Server
 docker run -d --rm \
   -p 8080:8080 \
   -e STARTUP="code-server --bind-addr 0.0.0.0:8080 --auth none ." \
@@ -120,9 +120,9 @@ docker run -d --rm \
 ```
 .
 ├── src/
-│   ├── languages/     # جافا، نود.جے‌اس، بايثون
-│   ├── frameworks/    # رياكت، نكست.جے‌اس، فيو، أنقولار
-│   └── softwares/     # كود-سيرفر
+│   ├── languages/     # Java, Node.js, Python
+│   ├── frameworks/    # React, Next.js, Vue.js, Angular
+│   └── softwares/     # Code-Server
 ├── .github/workflows/ # CI/CD
 ├── CHANGELOG.md
 └── LICENSE
