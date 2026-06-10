@@ -73,9 +73,10 @@
 
 **المميزات:** Pip · Virtualenv
 
-- - -
+---
 
-### 🌐 أُطر العمل
+<a id="أطر-العمل"></a>
+## 🌐 أُطر العمل
 
 | الإطار | اسم الصورة | المميزات |
 |-----------|-----------|----------|
@@ -84,9 +85,10 @@
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" width="14" height="14"> Vue.js | `ghcr.io/red-shadows-rs/pterodactyl-containers/vue:latest` | Vue CLI, Vite |
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg" width="14" height="14"> Angular | `ghcr.io/red-shadows-rs/pterodactyl-containers/angular:latest` | Angular CLI, SSR |
 
-- - -
+---
 
-### 💻 البرمجيات
+<a id="البرمجيات"></a>
+## 💻 البرمجيات
 
 | البرنامج | اسم الصورة | المنفذ |
 |----------|-----------|------|
