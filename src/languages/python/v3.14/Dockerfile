@@ -2,16 +2,16 @@ FROM --platform=$TARGETOS/$TARGETARCH python:3.14-slim
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="1.0.0" \
+    version="12.0.0" \
     description="Python 3.14 runtime for Pterodactyl Panel" \
-    org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
+    org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Python 3.14" \
     org.opencontainers.image.description="Secure Python 3.14 container for Pterodactyl"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get upgrade -y \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -36,6 +36,8 @@ ENV USER=container \
     HOME=/home/container
 
 WORKDIR /home/container
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD python3 --version 2>&1 | grep -q "Python 3.14" || exit 1

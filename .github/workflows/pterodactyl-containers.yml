@@ -8,6 +8,10 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   REGISTRY: ghcr.io
   IMAGE_PREFIX: ${{ github.repository }}
@@ -44,7 +48,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Java ${{ matrix.version }} Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/languages/java
           file: ./src/languages/java/${{ matrix.version }}/Dockerfile
@@ -79,7 +83,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Node.js ${{ matrix.version }} Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/languages/nodejs
           file: ./src/languages/nodejs/${{ matrix.version }}/Dockerfile
@@ -114,7 +118,7 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build Python ${{ matrix.version }} Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/languages/python
           file: ./src/languages/python/${{ matrix.version }}/Dockerfile
@@ -142,13 +146,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build React Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/frameworks/react
           file: ./src/frameworks/react/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.SHOULD_PUSH }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/react:latest
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/react:latest
 
   build-nextjs:
     name: Build Next.js Image
@@ -169,13 +174,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Next.js Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/frameworks/nextjs
           file: ./src/frameworks/nextjs/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.SHOULD_PUSH }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/nextjs:latest
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/nextjs:latest
 
   build-vue:
     name: Build Vue.js Image
@@ -196,13 +202,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Vue.js Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/frameworks/vue
           file: ./src/frameworks/vue/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.SHOULD_PUSH }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/vue:latest
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/vue:latest
 
   build-angular:
     name: Build Angular Image
@@ -223,13 +230,42 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Build Angular Container
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./src/frameworks/angular
           file: ./src/frameworks/angular/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.SHOULD_PUSH }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/angular:latest
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/angular:latest
+
+  build-codeserver:
+    name: Build code-server Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        if: ${{ env.SHOULD_PUSH }}
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+      - name: Build code-server Container
+        uses: docker/build-push-action@v6
+        with:
+          context: ./src/softwares/code-server
+          file: ./src/softwares/code-server/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: ${{ env.SHOULD_PUSH }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/code-server:latest
 
   build-summary:
     name: Build Summary
@@ -243,18 +279,20 @@ jobs:
         build-nextjs,
         build-vue,
         build-angular,
+        build-codeserver,
       ]
     if: always()
     steps:
       - name: Generate Build Report
         run: |
-          echo "Java:     ${{ needs.build-java.result }}"
-          echo "Node.js:  ${{ needs.build-nodejs.result }}"
-          echo "Python:   ${{ needs.build-python.result }}"
-          echo "React:    ${{ needs.build-react.result }}"
-          echo "Next.js:  ${{ needs.build-nextjs.result }}"
-          echo "Vue.js:   ${{ needs.build-vue.result }}"
-          echo "Angular:  ${{ needs.build-angular.result }}"
+          echo "Java:        ${{ needs.build-java.result }}"
+          echo "Node.js:     ${{ needs.build-nodejs.result }}"
+          echo "Python:      ${{ needs.build-python.result }}"
+          echo "React:       ${{ needs.build-react.result }}"
+          echo "Next.js:     ${{ needs.build-nextjs.result }}"
+          echo "Vue.js:      ${{ needs.build-vue.result }}"
+          echo "Angular:     ${{ needs.build-angular.result }}"
+          echo "code-server: ${{ needs.build-codeserver.result }}"
           echo "------------------------------------------------"
 
           if [[ "${{ needs.build-java.result }}" != "success" || \
@@ -263,7 +301,8 @@ jobs:
                 "${{ needs.build-react.result }}" != "success" || \
                 "${{ needs.build-nextjs.result }}" != "success" || \
                 "${{ needs.build-vue.result }}" != "success" || \
-                "${{ needs.build-angular.result }}" != "success" ]]; then
+                "${{ needs.build-angular.result }}" != "success" || \
+                "${{ needs.build-codeserver.result }}" != "success" ]]; then
             echo "[!] Some builds failed! Please check the logs."
             exit 1
           else

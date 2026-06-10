@@ -1,9 +1,6 @@
-
-
 #!/bin/bash
 set -e
 umask 022
-
 
 cd /home/container || exit 1
 

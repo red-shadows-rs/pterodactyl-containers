@@ -2,14 +2,16 @@ FROM --platform=$TARGETOS/$TARGETARCH node:22-bullseye-slim
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="1.0.0" \
+    version="12.0.0" \
     description="Vue.js runtime for Pterodactyl Panel" \
-    org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
+    org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Vue.js" \
     org.opencontainers.image.description="Secure Vue.js container for Pterodactyl with Vue CLI and Vite support"
 
-RUN apt-get update && apt-get upgrade -y \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -34,6 +36,8 @@ ENV USER=container \
     HOME=/home/container
 
 WORKDIR /home/container
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD node --version 2>&1 | grep -q "v22" || exit 1

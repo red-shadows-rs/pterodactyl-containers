@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v12.0.0] - 2026-06-10
+
+### 🚀 Added
+- **Arabic README:** Added `README_AR.md` with full Arabic translation and language toggle.
+- **Language Toggle:** Added tab-style language switcher between English and Arabic.
+
+### 🔄 Updated
+- **Version Bump:** All Dockerfiles updated from v11.0.0 → v12.0.0.
+- **Code Cleanup:** Removed blank lines from entrypoint headers, normalized `\$` escaping.
+- **Formatting:** Fixed CMD format inconsistency in Java Dockerfiles. Removed redundant `.dockerignore` patterns.
+- **README:** Complete redesign — clean, professional layout with table of contents, organized sections, and proper language icons.
+- **Logo:** Removed `assets/logo.svg`. Using clean text-based header instead.
+
+## [v11.0.0] - 2026-06-10
+
+### 🚀 Added
+- **Softwares:** New `src/softwares/` category added.
+- **code-server:** Added code-server image (Debian 12 bookworm-slim, multi-arch, auto-latest).
+- **CI/CD:** Added `concurrency` group to prevent duplicate builds.
+- **Robustness:** Added `SHELL pipefail` directive to all Dockerfiles.
+- **`.dockerignore` / `.gitignore`:** Added project-level ignore files.
+- **Logo:** Added project SVG logo in `assets/logo.svg`.
+
+### 🔄 Updated
+- **CI/CD:** Updated `docker/build-push-action` from `v5` to `v6`.
+- **Reproducibility:** Removed `apt-get upgrade -y` from all Dockerfiles (rely on base image rebuilds).
+- **DEBIAN_FRONTEND:** Added `noninteractive` to all non-Python Dockerfiles.
+- **Entrypoints:** Normalized formatting across all entrypoint scripts.
+- **Repository URL:** Fixed OCI labels across all 21 Dockerfiles to point to `red-shadows-rs/pterodactyl-containers`.
+- **Version Labels:** Updated all Dockerfile `LABEL version` to `11.0.0`.
+- **code-server:** Now fetches latest release dynamically via GitHub API instead of hardcoded v4.123.0.
+- **README:** Complete redesign with professional layout, tables, badges, and project logo.
+- **Image Tags:** Removed commit SHA tags from framework images. Removed code-server `:v4.123.0` tag (only `:latest` remains for dynamic builds).
+
+### 🗑️ Deprecated
+- **Node.js 18:** EOL since April 2025, marked as deprecated.
+- **Python 3.8:** EOL since October 2024, marked as deprecated.
+- **Python 3.9:** EOL since October 2025, marked as deprecated.
+
 ## [v10.0.0] - 2025-12-18
 
 ### 🚀 Added

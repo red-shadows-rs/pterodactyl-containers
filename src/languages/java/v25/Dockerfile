@@ -2,14 +2,16 @@ FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk-jammy
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="1.0.0" \
+    version="12.0.0" \
     description="Java 25 runtime for Pterodactyl Panel" \
-    org.opencontainers.image.source="https://github.com/RED-SHADOWS-RS/PterodactylContainer" \
+    org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \
     org.opencontainers.image.title="Pterodactyl Java 25" \
     org.opencontainers.image.description="Secure Java 25 container for Pterodactyl"
 
-RUN apt-get update && apt-get upgrade -y \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     curl \
     lsof \
@@ -36,10 +38,12 @@ ENV USER=container \
 
 WORKDIR /home/container
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD java -version 2>&1 | grep -q "Eclipse Temurin" || exit 1
 
 STOPSIGNAL SIGTERM
 
 COPY ./entrypoint.sh /entrypoint.sh
-CMD [ "/bin/bash", "/entrypoint.sh" ]
+CMD ["/bin/bash", "/entrypoint.sh"]
