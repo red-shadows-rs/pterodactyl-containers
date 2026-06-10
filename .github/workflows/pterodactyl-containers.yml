@@ -241,7 +241,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/angular:latest
 
   build-codeserver:
-    name: Build code-server Image
+    name: Build Code-Server Image
     runs-on: ubuntu-latest
     timeout-minutes: 30
     if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'release' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
@@ -293,7 +293,7 @@ jobs:
           echo "Next.js:     ${{ needs.build-nextjs.result }}"
           echo "Vue.js:      ${{ needs.build-vue.result }}"
           echo "Angular:     ${{ needs.build-angular.result }}"
-          echo "code-server: ${{ needs.build-codeserver.result }}"
+          echo "Code-Server: ${{ needs.build-codeserver.result }}"
           echo "------------------------------------------------"
 
           if [[ "${{ needs.build-java.result }}" != "success" || \
