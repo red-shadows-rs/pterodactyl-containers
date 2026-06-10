@@ -28,6 +28,7 @@ RUN apt-get update \
     procps \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && npm install -g pnpm \
     && useradd -m -d /home/container -s /bin/bash container \
     && chown container:container /home/container
 

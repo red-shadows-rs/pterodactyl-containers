@@ -55,7 +55,7 @@ Production-ready Docker images for the Pterodactyl Panel
 | 22 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22` |
 | 24 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v24` |
 
-**Features:** Yarn · NPM · TypeScript · Corepack
+**Features:** Yarn · npm · pnpm · npx · TypeScript · Corepack
 
 - - -
 
@@ -148,7 +148,8 @@ Distributed under the [MIT License (Non-Commercial)](LICENSE).
 
 <div align="center">
 
-Built by [RED SHADOWS | RS](https://github.com/red-shadows-rs) ·
+Built by <a href="https://github.com/shadow-x78">SHADOW_x78</a> -
+<a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> ·
 [Changelog](CHANGELOG.md)
 
 <sub>&copy; 2025 RED SHADOWS | RS</sub>

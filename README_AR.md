@@ -55,7 +55,7 @@
 | 22 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22` |
 | 24 | `ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v24` |
 
-**المميزات:** Yarn · NPM · TypeScript · Corepack
+**المميزات:** Yarn · npm · pnpm · npx · TypeScript · Corepack
 
 - - -
 
@@ -148,7 +148,8 @@ docker run -d --rm \
 
 <div align="center">
 
-بُني بواسطة [RED SHADOWS | RS](https://github.com/red-shadows-rs) ·
+بُني بواسطة <a href="https://github.com/shadow-x78">SHADOW_x78</a> ·
+<a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> ·
 [سجل التغييرات](CHANGELOG.md)
 
 <sub>&copy; 2025 RED SHADOWS | RS</sub>
