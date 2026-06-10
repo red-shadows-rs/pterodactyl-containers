@@ -92,9 +92,7 @@ Production-ready Docker images for the Pterodactyl Panel
 
 | Software | Image | Port |
 |----------|-------|------|
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> code-server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 |
-
-> code-server automatically fetches the latest version from GitHub.
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> code-server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (default) |
 
 ---
 

@@ -92,9 +92,7 @@
 
 | البرنامج | اسم الصورة | المنفذ |
 |----------|-----------|------|
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> كود-سيرفر | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 |
-
-> كود-سيرفر يجلب أحدث إصدار تلقائياً من GitHub.
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> كود-سيرفر | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (افتراضي) |
 
 ---
 
