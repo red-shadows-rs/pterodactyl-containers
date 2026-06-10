@@ -29,6 +29,7 @@
 
 ---
 
+<a id="الصور-المدعومة"></a>
 ## 🐳 الصور المدعومة
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="16" height="16"> جافا
@@ -43,7 +44,7 @@
 
 **المميزات:** OpenJDK · G1GC · ShenandoahGC · String Deduplication
 
----
+- - -
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" width="16" height="16"> نود.جے‌اس
 
@@ -56,7 +57,7 @@
 
 **المميزات:** Yarn · NPM · TypeScript · Corepack
 
----
+- - -
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="16" height="16"> بايثون
 
@@ -93,6 +94,7 @@
 
 ---
 
+<a id="بداية-سريعة"></a>
 ## 🚀 بداية سريعة
 
 ```bash
@@ -110,6 +112,7 @@ docker run -d --rm \
 
 ---
 
+<a id="هيكل-المشروع"></a>
 ## 🏗️ هيكل المشروع
 
 ```
@@ -125,6 +128,7 @@ docker run -d --rm \
 
 ---
 
+<a id="المساهمة"></a>
 ## 🤝 المساهمة
 
 1. انسخ المستودع (Fork)
@@ -135,6 +139,7 @@ docker run -d --rm \
 
 ---
 
+<a id="الترخيص"></a>
 ## 📜 الترخيص
 
 موزع تحت [MIT (غير تجاري)](LICENSE).

@@ -29,6 +29,7 @@ Production-ready Docker images for the Pterodactyl Panel
 
 ---
 
+<a id="supported-images"></a>
 ## 🐳 Supported Images
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="16" height="16"> Java
@@ -43,7 +44,7 @@ Production-ready Docker images for the Pterodactyl Panel
 
 **Features:** OpenJDK · G1GC · ShenandoahGC (v17+) · String Deduplication
 
----
+- - -
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" width="16" height="16"> Node.js
 
@@ -56,7 +57,7 @@ Production-ready Docker images for the Pterodactyl Panel
 
 **Features:** Yarn · NPM · TypeScript · Corepack
 
----
+- - -
 
 ### <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="16" height="16"> Python
 
@@ -93,6 +94,7 @@ Production-ready Docker images for the Pterodactyl Panel
 
 ---
 
+<a id="quick-start"></a>
 ## 🚀 Quick Start
 
 ```bash
@@ -110,6 +112,7 @@ docker run -d --rm \
 
 ---
 
+<a id="project-structure"></a>
 ## 🏗️ Project Structure
 
 ```
@@ -125,6 +128,7 @@ docker run -d --rm \
 
 ---
 
+<a id="contributing"></a>
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -135,6 +139,7 @@ docker run -d --rm \
 
 ---
 
+<a id="license"></a>
 ## 📜 License
 
 Distributed under the [MIT License (Non-Commercial)](LICENSE).
