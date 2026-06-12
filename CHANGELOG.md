@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v13.0.0] - 2026-06-12
+
+### 🚀 Added
+- **n8n:** Added n8n container image (Node.js 22-bookworm-slim, multi-arch, npm global install).
+
 ## [v12.0.0] - 2026-06-10
 
 ### 🚀 Added

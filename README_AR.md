@@ -93,6 +93,7 @@
 | البرنامج | اسم الصورة | المنفذ |
 |----------|-----------|------|
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> Code-Server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (افتراضي) |
+| <img src="https://cdn.simpleicons.org/n8n" width="14" height="14"> N8N | `ghcr.io/red-shadows-rs/pterodactyl-containers/n8n:latest` | 5678 (افتراضي) |
 
 ---
 

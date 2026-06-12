@@ -2,7 +2,7 @@ FROM --platform=$TARGETOS/$TARGETARCH python:3.12-slim
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="12.0.0" \
+    version="13.0.0" \
     description="Python 3.12 runtime for Pterodactyl Panel" \
     org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \

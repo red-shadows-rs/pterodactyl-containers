@@ -92,7 +92,8 @@ Production-ready Docker images for the Pterodactyl Panel
 
 | Software | Image | Port |
 |----------|-------|------|
-| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> code-server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (default) |
+| <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="14" height="14"> Code-Server | `ghcr.io/red-shadows-rs/pterodactyl-containers/code-server:latest` | 8080 (default) |
+| <img src="https://cdn.simpleicons.org/n8n" width="14" height="14"> N8N | `ghcr.io/red-shadows-rs/pterodactyl-containers/n8n:latest` | 5678 (default) |
 
 ---
 
@@ -105,7 +106,7 @@ docker run -it --rm \
   -e STARTUP="node --version" \
   ghcr.io/red-shadows-rs/pterodactyl-containers/nodejs:v22
 
-# Pull and run code-server
+# Pull and run Code-Server
 docker run -d --rm \
   -p 8080:8080 \
   -e STARTUP="code-server --bind-addr 0.0.0.0:8080 --auth none ." \
@@ -122,7 +123,7 @@ docker run -d --rm \
 ├── src/
 │   ├── languages/     # Java, Node.js, Python
 │   ├── frameworks/    # React, Next.js, Vue, Angular
-│   └── softwares/     # code-server
+│   └── softwares/     # Code-Server
 ├── .github/workflows/ # CI/CD pipeline
 ├── CHANGELOG.md
 └── LICENSE
