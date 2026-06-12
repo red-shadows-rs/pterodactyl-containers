@@ -4,7 +4,7 @@
 
 Production-ready Docker images for the Pterodactyl Panel
 
-[![Version](https://img.shields.io/badge/version-13.0.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-13.1-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![Build](https://img.shields.io/badge/build-passing-16a34a?style=flat-square&logo=githubactions)
 ![Arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-9333ea?style=flat-square&logo=docker)
@@ -155,6 +155,6 @@ Built by <a href="https://github.com/shadow-x78">SHADOW_x78</a> -
 <a href="https://github.com/red-shadows-rs">RED SHADOWS | RS</a> ·
 [Changelog](CHANGELOG.md)
 
-<sub>&copy; 2025 RED SHADOWS | RS</sub>
+<sub>&copy; 2021 - 2026 RED SHADOWS | RS</sub>
 
 </div>

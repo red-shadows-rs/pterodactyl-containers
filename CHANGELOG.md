@@ -2,12 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v13.0.0] - 2026-06-12
+## [v13.1] - 2026-06-12
+
+### 🚀 Added
+- **License:** Updated copyright year to 2021 - 2026.
+- **Version Badge:** Updated README version badges to v13.1.
+
+## [v13.0] - 2026-06-12
 
 ### 🚀 Added
 - **n8n:** Added n8n container image (Node.js 22-bookworm-slim, multi-arch, npm global install).
 
-## [v12.0.0] - 2026-06-10
+## [v12.0] - 2026-06-10
 
 ### 🚀 Added
 - **Arabic README:** Added `README_AR.md` with full Arabic translation and language toggle.
@@ -20,7 +26,7 @@ All notable changes to this project will be documented in this file.
 - **README:** Complete redesign — clean, professional layout with table of contents, organized sections, and proper language icons.
 - **Logo:** Removed `assets/logo.svg`. Using clean text-based header instead.
 
-## [v11.0.0] - 2026-06-10
+## [v11.0] - 2026-06-10
 
 ### 🚀 Added
 - **Softwares:** New `src/softwares/` category added.
@@ -46,7 +52,7 @@ All notable changes to this project will be documented in this file.
 - **Python 3.8:** EOL since October 2024, marked as deprecated.
 - **Python 3.9:** EOL since October 2025, marked as deprecated.
 
-## [v10.0.0] - 2025-12-18
+## [v10.0] - 2025-12-18
 
 ### 🚀 Added
 - **Java:** Added support for **Java 25**.

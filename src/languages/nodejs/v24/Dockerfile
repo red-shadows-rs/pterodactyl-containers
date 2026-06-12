@@ -2,7 +2,7 @@ FROM --platform=$TARGETOS/$TARGETARCH node:24-bullseye-slim
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="13.0.0" \
+    version="13.1.0" \
     description="Node.js 24 runtime for Pterodactyl Panel" \
     org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \

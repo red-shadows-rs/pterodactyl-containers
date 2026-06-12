@@ -4,7 +4,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 LABEL author="RED SHADOWS | RS" \
     maintainer="support@red-shadows-rs.com" \
-    version="13.0.0" \
+    version="13.1.0" \
     description="code-server runtime for Pterodactyl Panel" \
     org.opencontainers.image.source="https://github.com/red-shadows-rs/pterodactyl-containers" \
     org.opencontainers.image.vendor="RED SHADOWS | RS" \
