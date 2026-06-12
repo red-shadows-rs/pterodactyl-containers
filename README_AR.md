@@ -4,7 +4,7 @@
 
 صور Docker جاهزة للإنتاج للوحة Pterodactyl
 
-[![الإصدار](https://img.shields.io/badge/version-12.0.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![الإصدار](https://img.shields.io/badge/version-13.0.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![الترخيص](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![البناء](https://img.shields.io/badge/build-passing-16a34a?style=flat-square&logo=githubactions)
 ![المعمارية](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-9333ea?style=flat-square&logo=docker)
